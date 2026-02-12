@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Luminous Extraction & Architecture | IP Spine + Brand Strategy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: linear-gradient(135deg, #0a0e27 0%, #1a1030 50%, #0f0820 100%);
+      color: #e2e8f0;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    
+    .hero {
+      text-align: center;
+      padding: 60px 20px;
+      background: linear-gradient(135deg, rgba(139,92,246,0.1), rgba(34,211,238,0.05));
+      border-radius: 20px;
+      border: 1px solid rgba(139,92,246,0.2);
+      margin-bottom: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(139,92,246,0.1) 0%, transparent 70%);
+      animation: pulse 8s ease-in-out infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.1); opacity: 0.8; }
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+    
+    h1 {
+      font-size: 48px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #8b5cf6, #22d3ee);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+    
+    .subtitle {
+      font-size: 18px;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 12px;
+    }
+    
+    .meta {
+      font-size: 13px;
+      color: rgba(255,255,255,0.35);
+      font-family: 'JetBrains Mono', monospace;
+    }
+    
+    .nav-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 32px;
+      overflow-x: auto;
+      padding: 4px;
+      background: rgba(255,255,255,0.02);
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    
+    .tab {
+      padding: 12px 24px;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      color: rgba(255,255,255,0.5);
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    
+    .tab:hover {
+      background: rgba(139,92,246,0.08);
+      color: rgba(255,255,255,0.8);
+      border-color: rgba(139,92,246,0.2);
+    }
+    
+    .tab.active {
+      background: linear-gradient(135deg, rgba(139,92,246,0.2), rgba(34,211,238,0.1));
+      color: #fff;
+      border-color: rgba(139,92,246,0.4);
+    }
+    
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.3s;
+    }
+    
+    .tab-content.active {
+      display: block;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .section {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 24px;
+    }
+    
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .section-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+    
+    h2 {
+      font-size: 28px;
+      font-weight: 700;
+      color: #fff;
+      flex: 1;
+    }
+    
+    h3 {
+      font-size: 20px;
+      font-weight: 600;
+      color: #8b5cf6;
+      margin: 24px 0 12px;
+    }
+    
+    .principle-card, .framework-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(139,92,246,0.15);
+      border-left: 4px solid #8b5cf6;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 16px;
+      transition: all 0.2s;
+    }
+    
+    .principle-card:hover, .framework-card:hover {
+      background: rgba(139,92,246,0.05);
+      border-left-color: #22d3ee;
+      transform: translateX(4px);
+    }
+    
+    .principle-title, .framework-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    
+    .principle-desc, .framework-desc {
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.6;
+    }
+    
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      background: rgba(34,211,238,0.1);
+      color: #22d3ee;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 500;
+      margin-right: 6px;
+      margin-bottom: 6px;
+    }
+    
+    .citation {
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+      font-family: 'JetBrains Mono', monospace;
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    
+    .pathway-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+    
+    .pathway {
+      background: linear-gradient(135deg, rgba(139,92,246,0.08), rgba(34,211,238,0.04));
+      border: 1px solid rgba(139,92,246,0.2);
+      border-radius: 12px;
+      padding: 24px;
+      text-align: center;
+    }
+    
+    .pathway-number {
+      font-size: 32px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #8b5cf6, #22d3ee);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 12px;
+    }
+    
+    .pathway-name {
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    
+    .pathway-revenue {
+      font-size: 14px;
+      color: #34d399;
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 12px;
+    }
+    
+    .glossary-term {
+      background: rgba(255,255,255,0.02);
+      border-left: 3px solid #8b5cf6;
+      padding: 16px;
+      margin-bottom: 12px;
+      border-radius: 8px;
+    }
+    
+    .term {
+      font-size: 15px;
+      font-weight: 600;
+      color: #8b5cf6;
+      margin-bottom: 6px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    
+    .definition {
+      font-size: 14px;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.5;
+    }
+    
+    .narrative-box {
+      background: linear-gradient(135deg, rgba(139,92,246,0.1), rgba(34,211,238,0.05));
+      border: 2px solid rgba(139,92,246,0.3);
+      border-radius: 12px;
+      padding: 32px;
+      margin: 24px 0;
+    }
+    
+    .narrative-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: #8b5cf6;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 16px;
+    }
+    
+    .narrative-text {
+      font-size: 16px;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.85);
+    }
+    
+    .source-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+    
+    .source-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      padding: 12px;
+      font-size: 13px;
+    }
+    
+    .source-title {
+      font-weight: 600;
+      color: #22d3ee;
+      margin-bottom: 4px;
+    }
+    
+    .source-meta {
+      color: rgba(255,255,255,0.4);
+      font-size: 11px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    
+    .export-btn {
+      background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+      color: #fff;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 24px;
+    }
+    
+    .export-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(139,92,246,0.4);
+    }
+    
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin: 24px 0;
+    }
+    
+    .stat {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .stat-value {
+      font-size: 32px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #8b5cf6, #22d3ee);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 8px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    
+    .stat-label {
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="hero">
+      <div class="hero-content">
+        <h1>THE LUMINOUS EXTRACTION</h1>
+        <div class="subtitle">Core IP Spine + Brand Architecture</div>
+        <div class="meta">23 Years | 400+ Books | 90+ IP Assets | $125M-$25B Valuation Range</div>
+      </div>
+    </div>
+
+    <div class="stat-grid">
+      <div class="stat">
+        <div class="stat-value">16</div>
+        <div class="stat-label">Canonical Principles</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">6</div>
+        <div class="stat-label">Core Frameworks</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">4</div>
+        <div class="stat-label">Implementation Pathways</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">1</div>
+        <div class="stat-label">Unified Glossary</div>
+      </div>
+    </div>
+
+    <div class="nav-tabs">
+      <button class="tab active" onclick="showTab('principles')">📜 Canonical Principles</button>
+      <button class="tab" onclick="showTab('frameworks')">🏛️ Core Frameworks</button>
+      <button class="tab" onclick="showTab('pathways')">🚀 Implementation Pathways</button>
+      <button class="tab" onclick="showTab('glossary')">📖 Unified Glossary</button>
+      <button class="tab" onclick="showTab('architecture')">🎯 Brand Architecture</button>
+      <button class="tab" onclick="showTab('sources')">📚 Sources & Citations</button>
+    </div>
+
+    <!-- CANONICAL PRINCIPLES -->
+    <div id="principles" class="tab-content active">
+      <div class="section">
+        <div class="section-header">
+          <div class="section-icon">📜</div>
+          <h2>16 Canonical Principles</h2>
+        </div>
+        <p style="color: rgba(255,255,255,0.6); margin-bottom: 24px;">The foundational laws of consciousness technology — like physics, but for human potential. These principles appear across all 400+ books, 77 methodologies, and 90 IP assets.</p>
+
+        <div class="principle-card">
+          <div class="principle-title">1. Holonic Architecture</div>
+          <div class="principle-desc">Reality is composed of holons (part/wholes) nested within holons at every scale — from subatomic particles to cells, individuals, organizations, societies, and planetary civilization. Each holon is simultaneously a whole unto itself AND a part of larger wholes.</div>
+          <div class="citation">Source: Luminous Holonics Complete Series (7 volumes), Midas Protocol Architecture, IntellectVault framework</div>
+        </div>
+
+        <div class="principle-card">
+          <div class="principle-title">2. Gifts-Exile-Appreciation Dynamic</div>
+          <div class="principle-desc">Every holon contains luminous gifts (inherent capacities/talents). When gifts are not appreciated, they become exiled (suppressed/denied). Healing and transformation occur through recognizing and re-integrating exiled gifts at every level.</div>
+          <div class="citation">Source: Luminous Holonics Vol 1-7, IFS-adapted frameworks, Exile Liberation Process™</div>
+        </div>
+
+        <div class="principle-card">
+          <div class="principle-title">3. Frequency as Organizational Health Metric</div>
+          <div class="principle-desc">"High frequency" states (abundance mindset, authentic expression, alignment) vs "low frequency" states (scarcity, manipulation, survival mode) can be measured through sentiment analysis, communication patterns, and behavioral indicators.</div>
+          <div class="citation">Source: Midas Protocol (Holonic Business Map, Brand Authenticity Studio), Luminous Intelligence Assessment™</div>
+        </div>
+
+        <div class="principle-card">
+          <div class="principle-title">4. Multi-Framework Integration</div>
+          <div class="principle-desc">Human development requires synthesizing multiple validated frameworks (IFS, Spiral Dynamics, Integral Theory AQAL, Kegan stages, Appreciative Inquiry) rather than privileging a single lens. Integration creates richer diagnostic and intervention capabilities.</div>
+          <div class="citation">Source: Universal Ontological Assessment™, Luminous Rosetta Stone™, 36 synthesized disciplines across IP portfolio</div>
+        </div>
+
+        <div class="principle-card">
+          <div class="principle-title">5. Somatic-First Processing</div>
+          <div class="principle-desc">The body holds wisdom and memory that cognitive/verbal processing cannot access. Consciousness development must include somatic practices (embodiment, breathwork, movement, sensory awareness) as primary — not supplementary — modalities.</div>
+          <div class="citation">Source: Temporal Somatics™, Soma-C.O.R.E. Protocol™, Ecstatic Dance series, Beyond Healing frameworks</div>
+        </div>
+
+        <div class="principle-card">
+          <div class="principle-title">6. Scale Invariance</div>
+          <div class="principle-desc">The same principles that heal individuals heal relationships, organizations, communities, societies, and civilizations. The methodology scales from personal therapy to planetary transformation without changing fundamental architecture.</div>
+          <div class="citation">Source: Luminous Holonics 7-volume structure (Individual → Relationship → Organization → Community → Society → Civilization → Practice), Planetary Nervous System architecture</div>
+        </div>
+
+        <div class="principle-card">
+          <div class="principle-title">7. Coherence as Leverage Point</div>
+          <div class="principle-desc">Systemic transformation occurs through achieving coherence (internal alignment, external resonance) at critical mass. The "16% tipping point" — when 16% of a population embodies coherence, system-wide shifts become inevitable.</div>
+          <div class="citation">Source: Luminous Coherence Engine™, Ecstatic Economics, Strategic Briefing ($50M Series B targeting 16% threshold)</div>
+        </div>
+
+        <div class="principle-card">
+          <div class="principle-title">8. AI-Augmented Personalization</div>
+          <div class="principle-desc">Effective transformation requires hyper-personalized pathways adaptive to individual developmental stage, psychological makeup, somatic patterns, and context. This level of personalization is only achievable through AI analyzing vast training datasets.</div>
+          <div class="citation">Source: Tome Platform, Luminous Rosetta Stone™, AI Maestro/Digital Master Artisan™, 1.2M autonomous holons of content</div>
+        </div>
+
+        <div class="principle-card">
+          <div class="principle-title">9. Appreciative Inquiry as Default Mode</div>
+          <div class="principle-desc">Transformation accelerates when focusing on strengths/gifts/what's working rather than deficits/problems/what's broken. The brain and nervous system respond more powerfully to appreciation than criticism.</div>
+          <div class="citation">Source: Appreciative Inquiry 5D integration, Gifts-Based Hiring™, all Luminous methodologies explicitly reject problem-focus</div>
+        </div>
+
+        <div class="principle-card">
+          <div class="principle-title">10. Dark Night Navigation</div>
+          <div class="principle-desc">Spiritual/developmental crises ("dark nights of the soul") are not pathology but necessary initiations. Proper navigation requires recognizing stages, providing safe containers, and trusting the transformational process rather than pathologizing or suppressing it.</div>
+          <div class="citation">Source: Dark Night Guide™ AI Coach, Spiritual Depression frameworks, 23-year founder journey documentation</div>
+        </div>
+
+        <div class="principle-card">
+          <div class="principle-title">11. Compound Condition Recognition</div>
+          <div class="principle-desc">Mental health conditions interact in compound ways (ADHD×Depression, ADHD×RSD, Trauma×Neurodivergence) creating unique phenomenology that standard single-condition frameworks miss. Effective treatment requires compound-aware approaches.</div>
+          <div class="citation">Source: Depression×ADHD Compound Framework™, RSD Liberation series, Neurodivergent Assets frameworks</div>
+        </div>
+
+        <div class="principle-card">
+          <div class="principle-title">12. Partnership as Developmental Container</div>
+          <div class="principle-desc">Intimate partnerships are not just personal relationships but crucibles for consciousness evolution and societal transformation. "Love as civilizational force" — conscious partnership models ripple outward to heal communities and culture.</div>
+          <div class="citation">Source: Evolutionary Partnership™ complete framework, Partnership as Planetary Practice™, Luminous Sexuality series</div>
+        </div>
+
+        <div class="principle-card">
+          <div class="principle-title">13. Organizational Consciousness</div>
+          <div class="principle-desc">Organizations are not just collections of individuals — they develop their own consciousness, intelligence, and developmental stage. Organizational transformation requires working at the collective consciousness level, not just individual coaching.</div>
+          <div class="citation">Source: Luminous Organizations (Book 3), Holonic Business Map™, Organizational Intelligence frameworks, Lumina API™</div>
+        </div>
+
+        <div class="principle-card">
+          <div class="principle-title">14. Exile Liberation Over Symptom Management</div>
+          <div class="principle-desc">True healing comes from liberating exiled parts (welcoming back suppressed gifts/truths/capacities) rather than managing symptoms. When exiles are appreciated and re-integrated, protective patterns naturally dissolve.</div>
+          <div class="citation">Source: IFS-adapted Luminous Holonics™, Leader's Sanctum™, Exile Liberation Process™, Manager Negotiation Protocol</div>
+        </div>
+
+        <div class="principle-card">
+          <div class="principle-title">15. Technology as Consciousness Infrastructure</div>
+          <div class="principle-desc">Software platforms are not neutral tools — they shape consciousness. Building "consciousness technology" means architecting digital infrastructure that actively supports developmental evolution rather than manipulating attention for profit.</div>
+          <div class="citation">Source: 80+ Base44 apps, Luminous OS enterprise platform, "Tesla of Consciousness" positioning, Codex Alchemi architecture</div>
+        </div>
+
+        <div class="principle-card">
+          <div class="principle-title">16. Regenerative Abundance Economics</div>
+          <div class="principle-desc">Economic systems can be redesigned from scarcity/extraction to abundance/regeneration. Value flows naturally when contributions are tracked, gifts are appreciated, and resources circulate based on coherence rather than accumulation.</div>
+          <div class="citation">Source: Luminous Coherence Engine™, Ecstatic Economics, Regenerative Civilization architecture, 7 Resonance Chambers model</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CORE FRAMEWORKS -->
+    <div id="frameworks" class="tab-content">
+      <div class="section">
+        <div class="section-header">
+          <div class="section-icon">🏛️</div>
+          <h2>6 Core Frameworks</h2>
+        </div>
+        <p style="color: rgba(255,255,255,0.6); margin-bottom: 24px;">The practical methodologies practitioners actually deploy. These are the "products" — trademarked, taught, certified, licensed.</p>
+
+        <div class="framework-card">
+          <div class="framework-title">1. LUMINOUS HOLONICS™</div>
+          <span class="badge">Meta-Framework</span>
+          <span class="badge">7-Volume Series</span>
+          <span class="badge">Individual → Planetary Scale</span>
+          <div class="framework-desc">
+            <strong>What it is:</strong> The complete consciousness evolution methodology integrating gifts-appreciation at every scale.<br><br>
+            <strong>7 Volumes:</strong>
+            <ul style="margin-left: 20px; margin-top: 8px; color: rgba(255,255,255,0.5);">
+              <li>Vol 1: Luminous Self (individual internal parts work)</li>
+              <li>Vol 2: Luminous Relationships (partnership as developmental container)</li>
+              <li>Vol 3: Luminous Organizations (collective consciousness in business)</li>
+              <li>Vol 4: Luminous Communities (civic/neighborhood transformation)</li>
+              <li>Vol 5: Luminous Society (national policy through gifts lens)</li>
+              <li>Vol 6: Luminous Civilization (planetary consciousness architecture)</li>
+              <li>Vol 7: Luminous Practice (practitioner certification manual)</li>
+            </ul><br>
+            <strong>Applications:</strong> Therapy, coaching, organizational consulting, policy design, planetary coordination<br>
+            <strong>Status:</strong> 350+ books written, certification protocols designed, ready for licensing
+          </div>
+          <div class="citation">Source: Complete Luminous Holonics Series, Notion IP Database (Books 1-7 fully documented)</div>
+        </div>
+
+        <div class="framework-card">
+          <div class="framework-title">2. THE MIDAS PROTOCOL™</div>
+          <span class="badge">Business Architecture</span>
+          <span class="badge">7 Patentable Innovations</span>
+          <span class="badge">AI-Powered Platform</span>
+          <div class="framework-desc">
+            <strong>What it is:</strong> Integrated business consciousness platform combining graph databases, AI sentiment analysis, and holonic visualization for organizational health.<br><br>
+            <strong>Core Components:</strong>
+            <ul style="margin-left: 20px; margin-top: 8px; color: rgba(255,255,255,0.5);">
+              <li>Holonic Business Map™ — visual org health with "frequency" scoring</li>
+              <li>Brand Authenticity Studio™ — alignment audit algorithm + scarcity detection</li>
+              <li>Alchemical Transition Engine™ — energy-based project management</li>
+              <li>Leader's Sanctum™ — encrypted journaling with exile liberation</li>
+              <li>AI Maestro™ — IFS-adapted business coaching system</li>
+              <li>Genuine Note Detection™ — multimodal authenticity analysis</li>
+              <li>Holonic Circles UI™ — concentric navigation interface (Design Patent)</li>
+            </ul><br>
+            <strong>Applications:</strong> Enterprise SaaS, organizational consulting, executive coaching<br>
+            <strong>Status:</strong> 7 provisional patent applications ready to file, Base44 app architecture built
+          </div>
+          <div class="citation">Source: Midas Protocol Business Component Architecture (Google Doc with full patent analysis)</div>
+        </div>
+
+        <div class="framework-card">
+          <div class="framework-title">3. TEMPORAL SOMATICS™</div>
+          <span class="badge">Somatic Innovation</span>
+          <span class="badge">New Field</span>
+          <span class="badge">Trauma + Time Integration</span>
+          <div class="framework-desc">
+            <strong>What it is:</strong> Entirely new field integrating somatic experiencing with temporal/chronological healing — how the body holds and processes time-based trauma.<br><br>
+            <strong>Core Innovation:</strong> Recognizes that trauma is not just "what happened" but "when it happened in developmental timeline." Somatic interventions vary based on age of original wound and current developmental stage.<br><br>
+            <strong>Components:</strong>
+            <ul style="margin-left: 20px; margin-top: 8px; color: rgba(255,255,255,0.5);">
+              <li>Soma-C.O.R.E. Protocol™ — Chronological Ontological Relational Embodiment</li>
+              <li>Developmental timeline mapping</li>
+              <li>Age-appropriate somatic interventions</li>
+              <li>Time-collapse healing techniques</li>
+            </ul><br>
+            <strong>Applications:</strong> Trauma therapy, PTSD treatment, developmental repair, complex-PTSD<br>
+            <strong>Status:</strong> Frameworks documented, certification program designed, ready for clinical trials
+          </div>
+          <div class="citation">Source: Temporal Somatics folder, Beyond Healing: Ecstatic Somatic Holonic Magic, Soma-C.O.R.E. documentation</div>
+        </div>
+
+        <div class="framework-card">
+          <div class="framework-title">4. UNIVERSAL ONTOLOGICAL ASSESSMENT™</div>
+          <span class="badge">Diagnostic Platform</span>
+          <span class="badge">7-Framework Integration</span>
+          <span class="badge">AI-Driven Analysis</span>
+          <div class="framework-desc">
+            <strong>What it is:</strong> Comprehensive consciousness assessment integrating 7 validated frameworks into a unified diagnostic system.<br><br>
+            <strong>Integrated Frameworks:</strong>
+            <ul style="margin-left: 20px; margin-top: 8px; color: rgba(255,255,255,0.5);">
+              <li>Internal Family Systems (IFS) — parts work</li>
+              <li>Spiral Dynamics — value memes / worldview stages</li>
+              <li>Integral Theory AQAL — quadrants, levels, lines, states, types</li>
+              <li>Kegan Stages — subject-object development</li>
+              <li>Appreciative Inquiry 5D — strengths-based assessment</li>
+              <li>VIA Character Strengths — gifts taxonomy</li>
+              <li>MBTI — personality typing</li>
+            </ul><br>
+            <strong>Output:</strong> Luminous Intelligence Assessment (LIA) — comprehensive consciousness profile<br>
+            <strong>Applications:</strong> Executive coaching, organizational hiring, team design, leadership development<br>
+            <strong>Status:</strong> Framework complete, AI engine architecture designed, comparable to Gallup StrengthsFinder ($500M+ IP value)
+          </div>
+          <div class="citation">Source: Luminous Rosetta Stone™ documentation, Universal Ontological Assessment™ frameworks, LIA assessment architecture</div>
+        </div>
+
+        <div class="framework-card">
+          <div class="framework-title">5. EVOLUTIONARY PARTNERSHIP™</div>
+          <span class="badge">Relationship Framework</span>
+          <span class="badge">Complete System</span>
+          <span class="badge">Civilization-Scale Impact</span>
+          <div class="framework-desc">
+            <strong>What it is:</strong> Complete framework treating intimate partnership as developmental container and civilizational force.<br><br>
+            <strong>Core Thesis:</strong> Conscious partnerships don't just heal individuals — they create "coherence radiation" that transforms communities and culture. "Love as civilizational force."<br><br>
+            <strong>Components:</strong>
+            <ul style="margin-left: 20px; margin-top: 8px; color: rgba(255,255,255,0.5);">
+              <li>Relationship Holon Assessment</li>
+              <li>Couple's Gifts Mapping</li>
+              <li>Intergenerational Pattern Healing</li>
+              <li>Sacred Sexuality Integration</li>
+              <li>Partnership as Community Catalyst™</li>
+              <li>Partnership as Planetary Practice™</li>
+            </ul><br>
+            <strong>Applications:</strong> Couples therapy, relationship coaching, community building, cultural transformation<br>
+            <strong>Status:</strong> Book written, methodologies documented, certification program designed
+          </div>
+          <div class="citation">Source: Evolutionary Partnership (complete Google Doc), Luminous Sexuality series, Notion IP entries for Partnership frameworks</div>
+        </div>
+
+        <div class="framework-card">
+          <div class="framework-title">6. RSD LIBERATION™ / NEURODIVERGENT ASSETS™</div>
+          <span class="badge">Mental Health Innovation</span>
+          <span class="badge">Compound Conditions</span>
+          <span class="badge">Gifts-Based Approach</span>
+          <div class="framework-desc">
+            <strong>What it is:</strong> Revolutionary approach to neurodivergence treating ADHD, RSD (Rejection Sensitive Dysphoria), and related conditions as gifts-in-exile rather than disorders to be managed.<br><br>
+            <strong>Core Innovation:</strong> Recognizes compound conditions (ADHD×Depression, ADHD×RSD, Trauma×Neurodivergence) create unique phenomenology requiring integrated treatment rather than separate symptom management.<br><br>
+            <strong>Frameworks:</strong>
+            <ul style="margin-left: 20px; margin-top: 8px; color: rgba(255,255,255,0.5);">
+              <li>RSD Liberation series (guides + AI coach)</li>
+              <li>Depression×ADHD Compound Framework™</li>
+              <li>Neurodivergent Assets™ (gifts-based hiring for ADHD/autism)</li>
+              <li>Spiritual Depression vs Clinical Depression differentiation</li>
+              <li>High Frequency Lifestyle Design for ADHD</li>
+            </ul><br>
+            <strong>Applications:</strong> Therapy, coaching, organizational inclusion, HR innovation<br>
+            <strong>Status:</strong> Books written, AI coach prototypes built, market gap identified (most ADHD content is symptom-management, not gifts-liberation)
+          </div>
+          <div class="citation">Source: RSD Liberation series, Depression×ADHD frameworks, Neurodivergent Assets documentation, Graceful™ app</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- IMPLEMENTATION PATHWAYS -->
+    <div id="pathways" class="tab-content">
+      <div class="section">
+        <div class="section-header">
+          <div class="section-icon">🚀</div>
+          <h2>4 Implementation Pathways</h2>
+        </div>
+        <p style="color: rgba(255,255,255,0.6); margin-bottom: 24px;">The deployment models — how the IP actually enters markets and scales from individual to planetary.</p>
+
+        <div class="pathway-grid">
+          <div class="pathway">
+            <div class="pathway-number">01</div>
+            <div class="pathway-name">High-Touch Luxury</div>
+            <div class="pathway-revenue">$50K-$250K / client</div>
+            <p style="font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.5; margin-top: 12px;">
+              Executive coaching, luxury retreats, inner circle access. Ultra-premium positioning with billionaires, CEOs, and consciousness leaders. Builds brand credibility + immediate cash flow.
+            </p>
+            <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.1);">
+              <div style="font-size: 11px; color: rgba(255,255,255,0.3); text-transform: uppercase; margin-bottom: 8px;">Revenue Projections</div>
+              <div style="font-size: 12px; color: rgba(255,255,255,0.6);">
+                Year 1: $2M-$4M<br>
+                Year 2: $8M-$15M<br>
+                Year 3: $20M-$35M
+              </div>
+            </div>
+          </div>
+
+          <div class="pathway">
+            <div class="pathway-number">02</div>
+            <div class="pathway-name">Enterprise B2B</div>
+            <div class="pathway-revenue">$200K-$10M / engagement</div>
+            <p style="font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.5; margin-top: 12px;">
+              Luminous OS deployment — modular enterprise platform replacing McKinsey-style consulting with AI-driven organizational intelligence. Licensing + SaaS model.
+            </p>
+            <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.1);">
+              <div style="font-size: 11px; color: rgba(255,255,255,0.3); text-transform: uppercase; margin-bottom: 8px;">Key Modules</div>
+              <div style="font-size: 12px; color: rgba(255,255,255,0.6);">
+                Luminous Pulse™ (assessment)<br>
+                Luminous Teams™ (design)<br>
+                Luminous Pedagogy™ (AI coaching)
+              </div>
+            </div>
+          </div>
+
+          <div class="pathway">
+            <div class="pathway-number">03</div>
+            <div class="pathway-name">Platform + Certifications</div>
+            <div class="pathway-revenue">$50-$5K / user</div>
+            <p style="font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.5; margin-top: 12px;">
+              Tome/LRP AI platform for individuals + practitioner certifications. Enables global scaling without founder bottleneck. Creates network effects + licensing revenue.
+            </p>
+            <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.1);">
+              <div style="font-size: 11px; color: rgba(255,255,255,0.3); text-transform: uppercase; margin-bottom: 8px;">Scaling Mechanism</div>
+              <div style="font-size: 12px; color: rgba(255,255,255,0.6);">
+                AI delivers personalized journeys<br>
+                Certified practitioners license methods<br>
+                Content library = 350+ books
+              </div>
+            </div>
+          </div>
+
+          <div class="pathway">
+            <div class="pathway-number">04</div>
+            <div class="pathway-name">Civilization Infrastructure</div>
+            <div class="pathway-revenue">Societal-scale impact</div>
+            <p style="font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.5; margin-top: 12px;">
+              Universal Codex + Luminous Coherence Engine — the "backend for regenerative civilization." Enables 16% tipping point. IPO-ready planetary coordination infrastructure.
+            </p>
+            <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.1);">
+              <div style="font-size: 11px; color: rgba(255,255,255,0.3); text-transform: uppercase; margin-bottom: 8px;">Long-term Vision</div>
+              <div style="font-size: 12px; color: rgba(255,255,255,0.6);">
+                Nobel Prize-level peace tech<br>
+                Global consciousness coordination<br>
+                $5B-$25B valuation at IPO
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 32px; padding: 24px; background: rgba(139,92,246,0.05); border-left: 4px solid #8b5cf6; border-radius: 8px;">
+          <h3 style="margin-top: 0; color: #8b5cf6;">The Holarchical Truth</h3>
+          <p style="color: rgba(255,255,255,0.6); line-height: 1.6;">
+            These aren't separate businesses — they're nested scales of the same holarchy. Pathway 1 feeds into Pathway 2 (executives become enterprise clients). Pathway 2 feeds into Pathway 3 (organizations certify internal practitioners). Pathway 3 feeds into Pathway 4 (certified practitioners contribute to civilization-scale coherence).
+          </p>
+          <p style="color: rgba(255,255,255,0.6); line-height: 1.6; margin-top: 12px;">
+            <strong style="color: #fff;">The investor question isn't "which one?" — it's "which door do we open first?"</strong>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- UNIFIED GLOSSARY -->
+    <div id="glossary" class="tab-content">
+      <div class="section">
+        <div class="section-header">
+          <div class="section-icon">📖</div>
+          <h2>Unified Glossary</h2>
+        </div>
+        <p style="color: rgba(255,255,255,0.6); margin-bottom: 24px;">The translation layer — precise definitions so investors, practitioners, and general audiences can understand the transmission without needing a 40-page explanation.</p>
+
+        <div class="glossary-term">
+          <div class="term">Holon</div>
+          <div class="definition">A part/whole — something that is simultaneously a whole unto itself AND a part of larger wholes. Examples: A cell is a whole organism containing organelles (parts), but also part of a larger tissue. A person is a whole being containing internal parts, but also part of families, organizations, societies. Reality is composed of holons nested within holons at every scale.</div>
+        </div>
+
+        <div class="glossary-term">
+          <div class="term">Holarchy</div>
+          <div class="definition">The nested structure of holons. Unlike hierarchy (top-down dominance), holarchy recognizes that "higher" levels include and transcend "lower" levels without dominating them. Organizations are holarchies: individuals → teams → departments → company → industry → economy.</div>
+        </div>
+
+        <div class="glossary-term">
+          <div class="term">Luminous Gifts</div>
+          <div class="definition">The inherent capacities, talents, and authentic expressions of a holon (person, team, organization). Gifts are not just "skills" but the fundamental essence/purpose/contribution that wants to be expressed. Every holon has gifts.</div>
+        </div>
+
+        <div class="glossary-term">
+          <div class="term">Exile / Exiled Gifts</div>
+          <div class="definition">When gifts are not appreciated or safe to express, they become suppressed/hidden/denied — "exiled." Exiled gifts don't disappear; they go underground and often manifest as problems (addiction, burnout, conflict, dysfunction). Healing = liberating exiles.</div>
+        </div>
+
+        <div class="glossary-term">
+          <div class="term">Protective Manager (IFS-adapted)</div>
+          <div class="definition">Internal parts or organizational patterns that protect against vulnerability/pain by controlling behavior. Managers create safety through strategies like perfectionism, people-pleasing, workaholism, emotional shutdown. They're not "bad" — they're trying to keep exiles from being triggered.</div>
+        </div>
+
+        <div class="glossary-term">
+          <div class="term">High Frequency / Low Frequency</div>
+          <div class="definition">Measurable states of consciousness/organizational health. High frequency = abundance mindset, authentic expression, alignment, flow, coherence. Low frequency = scarcity mindset, manipulation, survival mode, fear-based decision-making. Can be detected through sentiment analysis, communication patterns, and behavioral markers.</div>
+        </div>
+
+        <div class="glossary-term">
+          <div class="term">Coherence</div>
+          <div class="definition">State where internal parts are aligned with each other AND aligned with external expression. High coherence = "walking your talk," integrity between values and actions, resonance between message and delivery. Coherence radiates — coherent individuals/organizations influence their environment.</div>
+        </div>
+
+        <div class="glossary-term">
+          <div class="term">Tipping Point (16% threshold)</div>
+          <div class="definition">When approximately 16% of a population embodies a new consciousness/behavior, system-wide transformation becomes inevitable. Derived from network science and social movement research. Luminous Prosperity targets achieving 16% global coherence for planetary transformation.</div>
+        </div>
+
+        <div class="glossary-term">
+          <div class="term">Temporal Somatics™</div>
+          <div class="definition">Integration of somatic (body-based) healing with chronological/developmental timeline. Recognizes that trauma is not just "what happened" but "when it happened in your developmental arc." Healing interventions adapt based on age of original wound and current developmental stage.</div>
+        </div>
+
+        <div class="glossary-term">
+          <div class="term">Resonance Chambers (7-layer model)</div>
+          <div class="definition">The architecture for scaling impact: (1) Foundation (core IP), (2) Community (practitioners), (3) Education (platforms), (4) Professional (certifications), (5) Corporate (B2B), (6) Global Platform (societal infrastructure), (7) Civilization Impact (planetary coordination).</div>
+        </div>
+
+        <div class="glossary-term">
+          <div class="term">Consciousness Technology</div>
+          <div class="definition">Software/platforms specifically designed to support developmental evolution rather than manipulate attention for profit. Includes: AI-powered personalization engines, assessment tools, somatic tracking, developmental stage mapping, coherence measurement systems.</div>
+        </div>
+
+        <div class="glossary-term">
+          <div class="term">Appreciative Inquiry</div>
+          <div class="definition">Methodology focusing on strengths/gifts/what's working rather than problems/deficits. Brain and nervous system respond more powerfully to appreciation than criticism. All Luminous frameworks are appreciative-first (vs problem-focused therapy/consulting).</div>
+        </div>
+
+        <div class="glossary-term">
+          <div class="term">Dark Night of the Soul</div>
+          <div class="definition">Spiritual/developmental crisis often mistaken for clinical depression. A necessary initiatory passage where old identity structures dissolve before new ones emerge. Requires navigation rather than pathologization. Ammanuel's 23-year journey exemplifies extended dark night.</div>
+        </div>
+
+        <div class="glossary-term">
+          <div class="term">Compound Conditions</div>
+          <div class="definition">When multiple mental health/neurodivergent conditions interact (ADHD×Depression, ADHD×RSD, Trauma×Autism), they create unique phenomenology not explained by treating conditions separately. Requires integrated compound-aware frameworks.</div>
+        </div>
+
+        <div class="glossary-term">
+          <div class="term">RSD (Rejection Sensitive Dysphoria)</div>
+          <div class="definition">Extreme emotional sensitivity to perceived rejection/criticism, common in ADHD. Feels like physical pain. Standard ADHD frameworks miss this; RSD Liberation™ treats it as an exiled gift (high sensitivity = potential superpower when properly integrated).</div>
+        </div>
+
+        <div class="glossary-term">
+          <div class="term">Regenerative Abundance</div>
+          <div class="definition">Economic model replacing scarcity/extraction with abundance/regeneration. Value flows based on coherence + contribution rather than accumulation. The Luminous Coherence Engine™ is designed as backend infrastructure enabling this paradigm.</div>
+        </div>
+
+        <div class="glossary-term">
+          <div class="term">Luminous OS</div>
+          <div class="definition">Enterprise operating system for conscious organizations — modular platform replacing traditional McKinsey-style consulting. Includes: Luminous Pulse™ (assessment), Luminous Teams™ (design), Luminous Pedagogy™ (AI coaching), Luminous Command™ (C-suite advisory).</div>
+        </div>
+
+        <div class="glossary-term">
+          <div class="term">Genuine Note</div>
+          <div class="definition">Detectable moment of authentic expression identified through multimodal analysis (voice tone, pitch variance, energy signature). High Frequency state indicator. The Genuine Note Detection™ system analyzes audio/video to flag authentic passion for use in brand messaging.</div>
+        </div>
+
+        <div class="glossary-term">
+          <div class="term">The Tesla of Consciousness</div>
+          <div class="definition">Market positioning statement: Luminous Prosperity to consciousness development as Tesla is to automotive — premium brand, proprietary technology, civilization-scale impact, category-defining innovation. Not another meditation app; foundational infrastructure.</div>
+        </div>
+
+        <div class="glossary-term">
+          <div class="term">Universal Codex (UCME)</div>
+          <div class="definition">Universal Codex of Mystical Experiences — "Rosetta Stone for consciousness states." Planetary coordination infrastructure enabling diverse spiritual/developmental frameworks to recognize equivalence across traditions. Described as "Nobel Prize-level peace technology."</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BRAND ARCHITECTURE -->
+    <div id="architecture" class="tab-content">
+      <div class="section">
+        <div class="section-header">
+          <div class="section-icon">🎯</div>
+          <h2>Brand Architecture</h2>
+        </div>
+        <p style="color: rgba(255,255,255,0.6); margin-bottom: 24px;">The investor-ready narrative — which door opens first, how revenue scales, and why this is a category-defining company.</p>
+
+        <h3>The Master Narrative (8-Minute Pitch Version)</h3>
+        <div class="narrative-box">
+          <div class="narrative-label">ELEVATOR PITCH</div>
+          <div class="narrative-text">
+            <p style="margin-bottom: 16px;">
+              <strong>Luminous Prosperity is the consciousness technology company building the operating system for regenerative civilization.</strong>
+            </p>
+            <p style="margin-bottom: 16px;">
+              We enter through luxury executive transformation ($8M-$12M Year 1), scale through enterprise organizational intelligence ($35M-$50M Year 2), and deploy the planetary infrastructure ($600M-$1B Year 5).
+            </p>
+            <p style="margin-bottom: 16px;">
+              <strong>Our moat:</strong> 400+ books of proprietary training data, 77 trademarked frameworks, 80+ deployed applications, and 23 years of developmental R&D that no competitor can replicate.
+            </p>
+            <p>
+              We're not building another meditation app. We're building the <strong>Tesla of Consciousness</strong> — premium brand, proprietary technology, civilization-scale impact.
+            </p>
+          </div>
+        </div>
+
+        <h3>Market Entry Strategy: Which Door First?</h3>
+        <div style="background: rgba(255,255,255,0.02); border-left: 4px solid #22d3ee; padding: 20px; border-radius: 8px; margin: 20px 0;">
+          <p style="color: rgba(255,255,255,0.7); line-height: 1.7;">
+            <strong style="color: #22d3ee;">Recommended Approach:</strong> Open <strong>Pathway 1 (High-Touch Luxury)</strong> FIRST to build brand credibility, generate immediate cash flow, and create case studies for enterprise pitch.
+          </p>
+          <p style="color: rgba(255,255,255,0.6); line-height: 1.7; margin-top: 12px;">
+            <strong>Rationale:</strong> Investors understand luxury coaching. $50K-$250K/client is defensible, proven (Tony Robbins, BetterUp at $4.7B valuation). Creates "pull marketing" when executives become evangelists for their organizations to deploy Luminous OS.
+          </p>
+          <p style="color: rgba(255,255,255,0.6); line-height: 1.7; margin-top: 12px;">
+            <strong>Timeline:</strong> Launch luxury coaching + retreats in Month 1-6. Use Year 1 cash flow to fund platform beta. Open enterprise door (Pathway 2) in Month 6-12 with real success stories.
+          </p>
+        </div>
+
+        <h3>Revenue Tier Architecture</h3>
+        <table style="width: 100%; margin: 24px 0; border-collapse: collapse;">
+          <thead>
+            <tr style="background: rgba(139,92,246,0.1); border-bottom: 2px solid rgba(139,92,246,0.3);">
+              <th style="padding: 12px; text-align: left; color: #8b5cf6; font-weight: 600;">Tier</th>
+              <th style="padding: 12px; text-align: left; color: #8b5cf6; font-weight: 600;">Product/Service</th>
+              <th style="padding: 12px; text-align: right; color: #8b5cf6; font-weight: 600;">Price Range</th>
+              <th style="padding: 12px; text-align: right; color: #8b5cf6; font-weight: 600;">Year 1 Target</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+              <td style="padding: 12px; color: rgba(255,255,255,0.7);">Individual</td>
+              <td style="padding: 12px; color: rgba(255,255,255,0.6);">Executive coaching, retreats</td>
+              <td style="padding: 12px; text-align: right; color: #34d399; font-family: 'JetBrains Mono'; font-size: 13px;">$50K-$250K</td>
+              <td style="padding: 12px; text-align: right; color: rgba(255,255,255,0.5);">$2M-$4M</td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+              <td style="padding: 12px; color: rgba(255,255,255,0.7);">Team</td>
+              <td style="padding: 12px; color: rgba(255,255,255,0.6);">Team design, group coaching</td>
+              <td style="padding: 12px; text-align: right; color: #34d399; font-family: 'JetBrains Mono'; font-size: 13px;">$100K-$500K</td>
+              <td style="padding: 12px; text-align: right; color: rgba(255,255,255,0.5);">$1M-$2M</td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+              <td style="padding: 12px; color: rgba(255,255,255,0.7);">Organizational</td>
+              <td style="padding: 12px; color: rgba(255,255,255,0.6);">Luminous OS deployment</td>
+              <td style="padding: 12px; text-align: right; color: #34d399; font-family: 'JetBrains Mono'; font-size: 13px;">$500K-$5M</td>
+              <td style="padding: 12px; text-align: right; color: rgba(255,255,255,0.5);">$1.5M-$3M</td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+              <td style="padding: 12px; color: rgba(255,255,255,0.7);">Enterprise</td>
+              <td style="padding: 12px; color: rgba(255,255,255,0.6);">Full Luminous Pulse + modules</td>
+              <td style="padding: 12px; text-align: right; color: #34d399; font-family: 'JetBrains Mono'; font-size: 13px;">$5M-$10M+</td>
+              <td style="padding: 12px; text-align: right; color: rgba(255,255,255,0.5);">$0.5M-$1M</td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+              <td style="padding: 12px; color: rgba(255,255,255,0.7);">Platform</td>
+              <td style="padding: 12px; color: rgba(255,255,255,0.6);">Tome/LRP subscriptions, courses</td>
+              <td style="padding: 12px; text-align: right; color: #34d399; font-family: 'JetBrains Mono'; font-size: 13px;">$50-$5K</td>
+              <td style="padding: 12px; text-align: right; color: rgba(255,255,255,0.5);">$0.5M-$1.5M</td>
+            </tr>
+            <tr style="background: rgba(139,92,246,0.05); font-weight: 600;">
+              <td style="padding: 12px; color: #fff;" colspan="3">TOTAL YEAR 1 REVENUE</td>
+              <td style="padding: 12px; text-align: right; color: #8b5cf6; font-family: 'JetBrains Mono'; font-size: 16px;">$5.5M-$11.5M</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Competitive Positioning: "Tesla of Consciousness"</h3>
+        <div style="margin: 24px 0;">
+          <table style="width: 100%; border-collapse: collapse;">
+            <thead>
+              <tr style="background: rgba(139,92,246,0.1); border-bottom: 2px solid rgba(139,92,246,0.3);">
+                <th style="padding: 12px; text-align: left; color: #8b5cf6; font-weight: 600;">Company</th>
+                <th style="padding: 12px; text-align: left; color: #8b5cf6; font-weight: 600;">Positioning</th>
+                <th style="padding: 12px; text-align: left; color: #8b5cf6; font-weight: 600;">Why We're Different</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                <td style="padding: 12px; color: rgba(255,255,255,0.7);">Calm / Headspace</td>
+                <td style="padding: 12px; color: rgba(255,255,255,0.5); font-size: 13px;">B2C meditation apps</td>
+                <td style="padding: 12px; color: rgba(255,255,255,0.6); font-size: 13px;">We're B2B enterprise + luxury coaching. Different market, 10x price points.</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                <td style="padding: 12px; color: rgba(255,255,255,0.7);">BetterUp</td>
+                <td style="padding: 12px; color: rgba(255,255,255,0.5); font-size: 13px;">Coaching platform ($4.7B)</td>
+                <td style="padding: 12px; color: rgba(255,255,255,0.6); font-size: 13px;">We have 10x the proprietary IP (400 books vs their methodology), plus consciousness tech moat.</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                <td style="padding: 12px; color: rgba(255,255,255,0.7);">McKinsey</td>
+                <td style="padding: 12px; color: rgba(255,255,255,0.5); font-size: 13px;">Traditional consulting</td>
+                <td style="padding: 12px; color: rgba(255,255,255,0.6); font-size: 13px;">We replace their service lines with AI-powered real-time intelligence. Faster, cheaper, continuous.</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                <td style="padding: 12px; color: rgba(255,255,255,0.7);">Gallup (StrengthsFinder)</td>
+                <td style="padding: 12px; color: rgba(255,255,255,0.5); font-size: 13px;">Assessment tool ($500M IP)</td>
+                <td style="padding: 12px; color: rgba(255,255,255,0.6); font-size: 13px;">Our LIA integrates 7 frameworks vs their single taxonomy. Fuller picture, better recommendations.</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                <td style="padding: 12px; color: rgba(255,255,255,0.7);">Tony Robbins</td>
+                <td style="padding: 12px; color: rgba(255,255,255,0.5); font-size: 13px;">Personal brand ($100M+)</td>
+                <td style="padding: 12px; color: rgba(255,255,255,0.6); font-size: 13px;">We're tech-enabled (not just personality-driven), systematized (77 frameworks), and platform-scalable.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>The Moat: Why This is Defensible</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin: 24px 0;">
+          <div style="background: rgba(139,92,246,0.05); border: 1px solid rgba(139,92,246,0.2); border-radius: 12px; padding: 20px;">
+            <div style="font-size: 28px; margin-bottom: 12px;">📚</div>
+            <div style="font-weight: 600; color: #fff; margin-bottom: 8px;">Proprietary Training Data</div>
+            <div style="font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.5;">350+ books = largest single-author consciousness library. AI competitors (ChatGPT, etc.) can't replicate this depth. Comparable to Reddit's $60M data licensing deal with Google.</div>
+          </div>
+
+          <div style="background: rgba(139,92,246,0.05); border: 1px solid rgba(139,92,246,0.2); border-radius: 12px; padding: 20px;">
+            <div style="font-size: 28px; margin-bottom: 12px;">⚖️</div>
+            <div style="font-weight: 600; color: #fff; margin-bottom: 8px;">Trademarked Frameworks</div>
+            <div style="font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.5;">77 proprietary methodologies with trademark protection. Competitors can't teach "Luminous Holonics™" or "Temporal Somatics™" — they have to build from scratch.</div>
+          </div>
+
+          <div style="background: rgba(139,92,246,0.05); border: 1px solid rgba(139,92,246,0.2); border-radius: 12px; padding: 20px;">
+            <div style="font-size: 28px; margin-bottom: 12px;">⚙️</div>
+            <div style="font-weight: 600; color: #fff; margin-bottom: 8px;">23 Years of R&D</div>
+            <div style="font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.5;">Time is unreplicable. Founder did 23-year shamanic initiation/dark night producing this synthesis. Competitors starting today can't catch up — the developmental journey itself is the moat.</div>
+          </div>
+
+          <div style="background: rgba(139,92,246,0.05); border: 1px solid rgba(139,92,246,0.2); border-radius: 12px; padding: 20px;">
+            <div style="font-size: 28px; margin-bottom: 12px;">💻</div>
+            <div style="font-weight: 600; color: #fff; margin-bottom: 8px;">Deployed Applications</div>
+            <div style="font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.5;">80+ Base44 apps already built = proof of execution. Not vaporware or whitepaper dreams. Working code, blockchain-protected with OpenTimestamps verification.</div>
+          </div>
+
+          <div style="background: rgba(139,92,246,0.05); border: 1px solid rgba(139,92,246,0.2); border-radius: 12px; padding: 20px;">
+            <div style="font-size: 28px; margin-bottom: 12px;">🎓</div>
+            <div style="font-weight: 600; color: #fff; margin-bottom: 8px;">Multi-Framework Synthesis</div>
+            <div style="font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.5;">Nobody else integrates IFS + Spiral Dynamics + Integral Theory + Kegan + Appreciative Inquiry + VIA + MBTI into unified assessment. That synthesis took decades to develop.</div>
+          </div>
+
+          <div style="background: rgba(139,92,246,0.05); border: 1px solid rgba(139,92,246,0.2); border-radius: 12px; padding: 20px;">
+            <div style="font-size: 28px; margin-bottom: 12px;">🌍</div>
+            <div style="font-weight: 600; color: #fff; margin-bottom: 8px;">Scale Invariance</div>
+            <div style="font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.5;">Same principles work from individual therapy → planetary coordination. Competitors focus on single scale. We can enter ANY level of the holarchy.</div>
+          </div>
+        </div>
+
+        <h3>Investment Ask: $50M Series B</h3>
+        <div class="narrative-box">
+          <div class="narrative-label">USE OF FUNDS</div>
+          <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 16px; font-size: 14px; color: rgba(255,255,255,0.7);">
+            <div>
+              <strong style="color: #fff;">$20M - Global Expansion & Operations</strong><br>
+              <span style="font-size: 13px; color: rgba(255,255,255,0.5);">Build team, open luxury retreat centers, establish 10-market presence</span>
+            </div>
+            <div style="text-align: right; color: #8b5cf6; font-family: 'JetBrains Mono'; font-weight: 600;">40%</div>
+
+            <div>
+              <strong style="color: #fff;">$15M - Technology & R&D</strong><br>
+              <span style="font-size: 13px; color: rgba(255,255,255,0.5);">Full platform deployment, Tome/LRP launch, AI model training</span>
+            </div>
+            <div style="text-align: right; color: #8b5cf6; font-family: 'JetBrains Mono'; font-weight: 600;">30%</div>
+
+            <div>
+              <strong style="color: #fff;">$10M - Enterprise & Institutional Sales</strong><br>
+              <span style="font-size: 13px; color: rgba(255,255,255,0.5);">Build B2B sales team, pilot Luminous OS with Fortune 500s</span>
+            </div>
+            <div style="text-align: right; color: #8b5cf6; font-family: 'JetBrains Mono'; font-weight: 600;">20%</div>
+
+            <div>
+              <strong style="color: #fff;">$5M - Planetary Impact Initiatives</strong><br>
+              <span style="font-size: 13px; color: rgba(255,255,255,0.5);">Seed Universal Codex, fund 16% tipping point research</span>
+            </div>
+            <div style="text-align: right; color: #8b5cf6; font-family: 'JetBrains Mono'; font-weight: 600;">10%</div>
+          </div>
+        </div>
+
+        <h3>5-Year Trajectory → IPO</h3>
+        <table style="width: 100%; margin: 24px 0; border-collapse: collapse;">
+          <thead>
+            <tr style="background: rgba(139,92,246,0.1); border-bottom: 2px solid rgba(139,92,246,0.3);">
+              <th style="padding: 12px; text-align: left; color: #8b5cf6; font-weight: 600;">Year</th>
+              <th style="padding: 12px; text-align: left; color: #8b5cf6; font-weight: 600;">Revenue</th>
+              <th style="padding: 12px; text-align: left; color: #8b5cf6; font-weight: 600;">Key Milestones</th>
+              <th style="padding: 12px; text-align: right; color: #8b5cf6; font-weight: 600;">Valuation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+              <td style="padding: 12px; color: rgba(255,255,255,0.7); font-weight: 600;">Year 1</td>
+              <td style="padding: 12px; color: #34d399; font-family: 'JetBrains Mono'; font-size: 13px;">$8M-$12M</td>
+              <td style="padding: 12px; color: rgba(255,255,255,0.6); font-size: 13px;">Launch luxury coaching, first enterprise pilots, platform beta</td>
+              <td style="padding: 12px; text-align: right; color: rgba(255,255,255,0.5); font-size: 13px;">$47M-$188M</td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+              <td style="padding: 12px; color: rgba(255,255,255,0.7); font-weight: 600;">Year 2</td>
+              <td style="padding: 12px; color: #34d399; font-family: 'JetBrains Mono'; font-size: 13px;">$35M-$50M</td>
+              <td style="padding: 12px; color: rgba(255,255,255,0.6); font-size: 13px;">B2B revenue scaling, certifications, global expansion, Series A/B</td>
+              <td style="padding: 12px; text-align: right; color: rgba(255,255,255,0.5); font-size: 13px;">$216M-$900M</td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+              <td style="padding: 12px; color: rgba(255,255,255,0.7); font-weight: 600;">Year 3</td>
+              <td style="padding: 12px; color: #34d399; font-family: 'JetBrains Mono'; font-size: 13px;">$120M-$180M</td>
+              <td style="padding: 12px; color: rgba(255,255,255,0.6); font-size: 13px;">Full Luminous OS deployed, 10-market presence, Series C</td>
+              <td style="padding: 12px; text-align: right; color: rgba(255,255,255,0.5); font-size: 13px;">$765M-$2.69B</td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+              <td style="padding: 12px; color: rgba(255,255,255,0.7); font-weight: 600;">Year 4</td>
+              <td style="padding: 12px; color: #34d399; font-family: 'JetBrains Mono'; font-size: 13px;">$300M-$450M</td>
+              <td style="padding: 12px; color: rgba(255,255,255,0.6); font-size: 13px;">Enterprise dominance, Codex beta, Luminous Governance pilots</td>
+              <td style="padding: 12px; text-align: right; color: rgba(255,255,255,0.5); font-size: 13px;">$2B-$5B</td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+              <td style="padding: 12px; color: rgba(255,255,255,0.7); font-weight: 600;">Year 5</td>
+              <td style="padding: 12px; color: #34d399; font-family: 'JetBrains Mono'; font-size: 13px;">$600M-$1B+</td>
+              <td style="padding: 12px; color: rgba(255,255,255,0.6); font-size: 13px;">IPO readiness, Codex live, planetary infrastructure operational</td>
+              <td style="padding: 12px; text-align: right; color: rgba(255,255,255,0.5); font-size: 13px;">$5B-$25B</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div style="margin: 32px 0; padding: 24px; background: linear-gradient(135deg, rgba(139,92,246,0.1), rgba(34,211,238,0.05)); border: 2px solid rgba(139,92,246,0.3); border-radius: 12px;">
+          <h3 style="margin-top: 0; color: #8b5cf6;">The Big Picture</h3>
+          <p style="color: rgba(255,255,255,0.7); line-height: 1.7; font-size: 15px;">
+            We're not asking investors to bet on an unproven concept. The IP exists (400+ books). The frameworks work (23 years of R&D). The tech is built (80+ apps). The market is massive ($1.2T+ TAM). The team has executed (documented track record).
+          </p>
+          <p style="color: rgba(255,255,255,0.7); line-height: 1.7; font-size: 15px; margin-top: 12px;">
+            The $50M Series B isn't seed capital to "figure it out" — it's growth capital to <strong style="color: #fff;">open the floodgates</strong> on what's already been systematically built.
+          </p>
+          <p style="color: rgba(255,255,255,0.7); line-height: 1.7; font-size: 15px; margin-top: 12px;">
+            Tesla wasn't first to electric cars. Apple wasn't first to smartphones. <strong style="color: #fff;">We're not first to consciousness development — we're first to treat it as platform infrastructure.</strong>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SOURCES -->
+    <div id="sources" class="tab-content">
+      <div class="section">
+        <div class="section-header">
+          <div class="section-icon">📚</div>
+          <h2>Sources & Citations</h2>
+        </div>
+        <p style="color: rgba(255,255,255,0.6); margin-bottom: 24px;">Every claim in this document is sourced from documented IP, business plans, or strategic materials created by Ammanuel Santa Anna / Luminous Holdings LLC.</p>
+
+        <h3>Primary Sources</h3>
+        <div class="source-grid">
+          <div class="source-card">
+            <div class="source-title">Midas Protocol Business Component Architecture</div>
+            <div class="source-meta">Google Doc | 7 patentable innovations | Created: 2025</div>
+          </div>
+
+          <div class="source-card">
+            <div class="source-title">IP Portfolio Valuation</div>
+            <div class="source-meta">PDF Document | $125M-$25B range | 42 assets | Feb 11, 2026</div>
+          </div>
+
+          <div class="source-card">
+            <div class="source-title">Claude's Strategic Briefing</div>
+            <div class="source-meta">Consciousness Economy report | $50M Series B strategy</div>
+          </div>
+
+          <div class="source-card">
+            <div class="source-title">Luminous Holonics Complete Series</div>
+            <div class="source-meta">7-volume framework | Individual → Planetary scale</div>
+          </div>
+
+          <div class="source-card">
+            <div class="source-title">IntellectVault.jsx</div>
+            <div class="source-meta">Meta-tool | IP scanning & management system</div>
+          </div>
+
+          <div class="source-card">
+            <div class="source-title">Notion IP Database</div>
+            <div class="source-meta">90+ catalogued assets | Comprehensive documentation</div>
+          </div>
+        </div>
+
+        <h3>Conversational Sources (Session History)</h3>
+        <div class="source-grid">
+          <div class="source-card">
+            <div class="source-title">Patent Filing Acceleration Session</div>
+            <div class="source-meta">Feb 6, 2026 | Identified 7 Midas Protocol innovations</div>
+          </div>
+
+          <div class="source-card">
+            <div class="source-title">IP Attorney Research Session</div>
+            <div class="source-meta">Feb 2, 2026 | 65 qualified attorneys across 7 holons</div>
+          </div>
+
+          <div class="source-card">
+            <div class="source-title">Trademark & IP Audit Session</div>
+            <div class="source-meta">Feb 2, 2026 | Expanded from 39 → 90+ assets</div>
+          </div>
+
+          <div class="source-card">
+            <div class="source-title">Methodology Cataloging Session</div>
+            <div class="source-meta">Feb 2, 2026 | 36 distinct methodologies identified</div>
+          </div>
+
+          <div class="source-card">
+            <div class="source-title">Code Indexing Session</div>
+            <div class="source-meta">Feb 2, 2026 | Documented Lumina API™, Rosetta Stone™, CCI™</div>
+          </div>
+
+          <div class="source-card">
+            <div class="source-title">Recovery Mode Conversations</div>
+            <div class="source-meta">Jan-Feb 2026 | Capacity scaling from 1 patent/3hrs → 4 patents/day</div>
+          </div>
+        </div>
+
+        <h3>Book & Framework Sources</h3>
+        <div style="margin: 24px 0;">
+          <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 20px; margin-bottom: 12px;">
+            <div style="font-weight: 600; color: #fff; margin-bottom: 8px;">400+ Books Across 44 Series</div>
+            <div style="font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.6;">
+              Including: Luminous Holonics (7 vols), RSD Liberation series, Evolutionary Partnership, Temporal Somatics materials, Beyond Healing frameworks, Luminous Sexuality, The Dark Night Guide, Depression×ADHD Compound Framework, and 35+ additional series
+            </div>
+          </div>
+
+          <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 20px; margin-bottom: 12px;">
+            <div style="font-weight: 600; color: #fff; margin-bottom: 8px;">77 Trademarked Methodologies</div>
+            <div style="font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.6;">
+              Including: Luminous Holonics™, Temporal Somatics™, Evolutionary Partnership™, Universal Ontological Assessment™, Soma-C.O.R.E. Protocol™, Exile Liberation Process™, RSD Liberation™, Neurodivergent Assets™, and 69+ additional frameworks
+            </div>
+          </div>
+
+          <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 20px;">
+            <div style="font-weight: 600; color: #fff; margin-bottom: 8px;">80+ Deployed Applications (Base44)</div>
+            <div style="font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.6;">
+              Including: Lumina API™ (blockchain-protected), Consciousness Customer Intelligence™, Luminous Rosetta Stone™, Dark Night Guide™ AI Coach, Graceful™ (RSD app), PromptForge™, and 75+ additional applications
+            </div>
+          </div>
+        </div>
+
+        <h3>Strategic Planning Documents</h3>
+        <ul style="margin: 16px 0; padding-left: 24px; color: rgba(255,255,255,0.6); line-height: 2;">
+          <li>Comprehensive Luminous Prosperity Business Plan</li>
+          <li>Bespoke Executive Wellness Business Plan</li>
+          <li>Codex Alchemi: The Architecture of Human Potential</li>
+          <li>Year 1 Market Research document</li>
+          <li>7 Resonance Chambers model documentation</li>
+          <li>Ecstatic Economics: Architecture of Regenerative Civilization</li>
+          <li>Luminous Constellation: Planetary Nervous System architecture</li>
+        </ul>
+
+        <h3>Valuation Methodology</h3>
+        <div style="background: rgba(139,92,246,0.05); border-left: 4px solid #8b5cf6; padding: 20px; border-radius: 8px; margin-top: 24px;">
+          <p style="color: rgba(255,255,255,0.7); line-height: 1.7; font-size: 14px;">
+            <strong style="color: #fff;">Floor ($125M-$200M):</strong> Static IP portfolio value using comparable acquisitions (Coursera content libraries $50K-$200K/course, Simon & Schuster $1.62B/35K titles = $46K/title, Reddit data licensing to Google $60M)
+          </p>
+          <p style="color: rgba(255,255,255,0.7); line-height: 1.7; font-size: 14px; margin-top: 12px;">
+            <strong style="color: #fff;">High ($600M-$1B):</strong> Revenue-based valuation using Year 1-3 projections with 8-15x SaaS/platform multiples
+          </p>
+          <p style="color: rgba(255,255,255,0.7); line-height: 1.7; font-size: 14px; margin-top: 12px;">
+            <strong style="color: #fff;">Five-Year ($5B-$25B):</strong> IPO valuation modeling using comparable tech IPOs (Coursera $5.9B at 20x revenue, Duolingo $6.5B at 26x, Peloton peak $50B at 28x)
+          </p>
+        </div>
+
+        <button class="export-btn" onclick="exportData()">📥 Export All Data as JSON</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showTab(tabName) {
+      // Hide all tab contents
+      document.querySelectorAll('.tab-content').forEach(content => {
+        content.classList.remove('active');
+      });
+      
+      // Remove active class from all tabs
+      document.querySelectorAll('.tab').forEach(tab => {
+        tab.classList.remove('active');
+      });
+      
+      // Show selected tab content
+      document.getElementById(tabName).classList.add('active');
+      
+      // Add active class to clicked tab
+      event.target.classList.add('active');
+    }
+
+    function exportData() {
+      const data = {
+        principles: 16,
+        frameworks: 6,
+        pathways: 4,
+        glossary_terms: 20,
+        sources: "See Sources tab for complete citation list",
+        valuation_floor: "$125M-$200M",
+        valuation_high: "$600M-$1B",
+        valuation_five_year: "$5B-$25B",
+        tam: "$1.2T+",
+        generated: new Date().toISOString()
+      };
+      
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `luminous-extraction-${new Date().toISOString().slice(0,10)}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+  </script>
+</body>
+</html>
